@@ -10,7 +10,7 @@ def getStartEnd(st):
     return [st[0].stats.starttime, st[0].stats.endtime]
 
 def write2file(stream, filename):
-    stream.write(filename, format="MSEED
+    stream.write(filename, format="MSEED")
 
 @click.command()
 @click.argument('filename', type=click.Path(exists=True))
