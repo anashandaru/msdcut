@@ -13,6 +13,7 @@ def getStartEnd(streamList):
     starttimeList = []
     endtimeList = []
     for stream in streamList:
+        stream.merge(fill_value="interpolate")
         for trace in stream:
             starttimeList.append(trace.stats.starttime)
             endtimeList.append(trace.stats.endtime)
@@ -36,7 +37,8 @@ def main(filename):
     end = UTCDateTime(end)
     for i, item in enumerate(stream):
         item.trim(start, end)
-        write2file(item, "cut-"+basename(filename[i]))
+        click.echo(basename(filename[i])+"-cut")
+        write2file(item, basename(filename[i])+"-cut")
     click.echo("File is cutted")
  
 if __name__ == '__main__':
